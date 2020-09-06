@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Repositories.Models;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,11 @@ namespace Repositories.Controllers
             using (var webClient = new WebClient())
             {
                 var result = new JsonResult { };
-                if (searchWord != null)
+                if (searchWord == null || searchWord == "")
+                {
+                    result.Data = "EmptySearching";
+                }
+                else
                 {
                     //get array from website https://api.github.com/search/repositories?q=YOUR_SEARCH_KEYWORD
 
@@ -42,10 +46,6 @@ namespace Repositories.Controllers
                     {
                         result.Data = ex.ToString();
                     }
-                }
-                else
-                {
-                    result.Data = "EmptySearching";
                 }
                 return result;
             }
