@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="center text-primary">
+    <h1>Search Repositories</h1>
+</div>
+    
+
+
+<div ng-controller="homeController">
+    <div class="s130">
+        <form>
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                    <div class="svg-wrapper">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input id="search" type="text" placeholder="What are you looking for?" ng-model="searchWord" />
+                </div>
+                <div class="input-field second-wrap">
+                    <button class="btn-search" type="button" ng-click="ButtonClick()">SEARCH</button>
+                </div>
+            </div>
+            <span class="info">ex. Game, Music, Video, Photography</span>
+        </form>
+    </div>
+
+
+    <div ng-show="showPic">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-3 col-xs-6 thumb" style="margin-bottom: 8px" ng-repeat="item in itemsCollection">
+                <div class="card">
+                    <img src="{{item.Owner.Avatar_url}}" class="card-img-top" alt="{{item.Name}}">
+                    <div class="card-body">
+                        <h6 class="card-title">{{item.Name}}</h6>
+                        <input class="btn btn-success" type="button" ng-click="addItemToCart(item)" value="Bookmark" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div my-directive2 name="popupTitle" class="modal-header">
+
+                </div>
+                <div my-directive name="popupContent" class="modal-body">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
