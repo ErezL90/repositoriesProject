@@ -6,7 +6,8 @@ This project was generated with MVC & AngularJS.
 
 ## Instructions
 
-1. Download All Project including the Folder: \.vs\ (configuration with applicationhost.config)
+1. Download All Project including the Folders: 
+   [.vs] & [packages] folders - (configuration with applicationhost.config file and packages folders) 
 2. Extract to the folder you want in your PC.
 3. Open project by clicking on Repositories.sln
 4. Run the project for example by IIS Express
