@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     var app = angular
         .module("myApp", [])
         .controller("homeController", function ($scope, $http) {
@@ -19,18 +19,24 @@
                         headers: { "Content-Type": "application/json" }
                     })
                         .then(function (response) {
-                            if (response.data !== "EmptySearching" && response.status === 200) {
+                            if (response.status === 200) {
                                 $scope.popupTitle = "Message";
-                                //if ruturn "Empty" means not found or sent null for serch
-                                resultItems = response.data.Items;
-                                if (resultItems.length > 0) {
-                                    $scope.showPic = true;
-                                    $scope.itemsCollection = resultItems;
+                                if (response.data === "EmptySearching") {
+                                    $scope.popupTitle = "Empty searching";
+                                    $scope.popupContent = "Please search something word!";
+                                    $('#exampleModalCenter').modal('show');
                                 }
                                 else {
-                                    $scope.showPic = false;
-                                    $scope.popupContent = "Please try to search something else!";
-                                    $('#exampleModalCenter').modal('show');
+                                    resultItems = response.data.Items;
+                                    if (resultItems.length > 0) {
+                                        $scope.showPic = true;
+                                        $scope.itemsCollection = resultItems;
+                                    }
+                                    else {
+                                        $scope.showPic = false;
+                                        $scope.popupContent = "Please try to search something else!";
+                                        $('#exampleModalCenter').modal('show');
+                                    }
                                 }
                             }
                             else {
